@@ -1,0 +1,14 @@
+{
+  "name": "parity-pmr",
+  "version": "0.1.0",
+  "description": "Parity's native market reporting protocol",
+  "author": "Jussi Virtanen",
+  "license": "Apache-2.0",
+  "repository": "paritytrading/node-parity-pmr",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^3"
+  }
+}
