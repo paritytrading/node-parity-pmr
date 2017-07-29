@@ -4,9 +4,9 @@ Parity PMR implements [Parity][]'s native market reporting protocol on Node.
 
   [Parity]: https://github.com/paritytrading/parity
 
-## Download
+## Install
 
-Download Parity PMR:
+Install Parity PMR:
 
 ```
 npm install parity-pmr
