@@ -2,6 +2,7 @@
 // Project: https://github.com/paritytrading/node-parity-pmr#readme
 // Definitions by: Leo Vujanić <https://github.com/leovujanic>
 
+import {Buffer} from "node";
 
 /**
  * Declares Parity PMR message structure
