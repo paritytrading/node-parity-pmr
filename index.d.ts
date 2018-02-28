@@ -4,37 +4,50 @@
 // Full protocol specification can be found here https://github.com/paritytrading/parity/blob/master/libraries/net/doc/PMR.md#readme
 import {Buffer} from "node";
 
+export enum MessageType {
+    ORDER_ADDED = "A",
+    ORDER_ENTERED = "E",
+    ORDER_CANCELED = "X",
+    VERSION = "V",
+    TRADE = "T",
+}
+
+export enum Side {
+    BUY = "B",
+    SELL = "S"
+}
+
 export interface Version {
-    messageType: "V",
+    messageType: MessageType.VERSION,
     version: number;
 }
 
 export interface OrderEntered {
-    messageType: "E",
+    messageType: MessageType.ORDER_ENTERED,
     timestamp: number;
     username: string;
     orderNumber: number;
-    side: "B" | "S";
+    side: Side;
     instrument: string;
     quantity: number;
     price: number;
 }
 
 export interface OrderAdded {
-    messageType: "A",
+    messageType: MessageType.ORDER_ADDED,
     timestamp: number;
     orderNumber: number;
 }
 
 export interface OrderCanceled {
-    messageType: "X",
+    messageType: MessageType.ORDER_CANCELED,
     timestamp: number;
     orderNumber: number;
     canceledQuantity: number;
 }
 
 export interface Trade {
-    messageType: "T",
+    messageType: MessageType.TRADE,
     timestamp: number;
     restingOrderNumber: number;
     incomingOrderNumber: number;
