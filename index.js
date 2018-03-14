@@ -1,16 +1,32 @@
 'use strict';
 
+const MessageType = {
+  ORDER_ADDED: 'A',
+  ORDER_ENTERED: 'E',
+  ORDER_CANCELED: 'X',
+  VERSION: 'V',
+  TRADE: 'T'
+};
+
+const Side = {
+  BUY: 'B',
+  SELL: 'S'
+};
+
+exports.Side = Side;
+exports.MessageType = MessageType;
+
 exports.format = (message) => {
   switch (message.messageType) {
-    case 'V':
+    case MessageType.VERSION:
       return formatVersion(message);
-    case 'E':
+    case MessageType.ORDER_ENTERED:
       return formatOrderEntered(message);
-    case 'A':
+    case MessageType.ORDER_ADDED:
       return formatOrderAdded(message);
-    case 'X':
+    case MessageType.ORDER_CANCELED:
       return formatOrderCanceled(message);
-    case 'T':
+    case MessageType.TRADE:
       return formatTrade(message);
     default:
       throw new Error('Unknown message type: ' + message.messageType);
@@ -47,7 +63,7 @@ function formatVersion(message) {
 
 function parseVersion(buffer) {
   return {
-    messageType: 'V',
+    messageType: MessageType.VERSION,
     version: buffer.readUInt32BE(1),
   };
 }
@@ -69,7 +85,7 @@ function formatOrderEntered(message) {
 
 function parseOrderEntered(buffer) {
   return {
-    messageType: 'E',
+    messageType: MessageType.ORDER_ENTERED,
     timestamp: readUInt64BE(buffer, 1),
     username: readString(buffer, 9, 8),
     orderNumber: readUInt64BE(buffer, 17),
@@ -92,7 +108,7 @@ function formatOrderAdded(message) {
 
 function parseOrderAdded(buffer) {
   return {
-    messageType: 'A',
+    messageType: MessageType.ORDER_ADDED,
     timestamp: readUInt64BE(buffer, 1),
     orderNumber: readUInt64BE(buffer, 9),
   };
@@ -111,7 +127,7 @@ function formatOrderCanceled(message) {
 
 function parseOrderCanceled(buffer) {
   return {
-    messageType: 'X',
+    messageType: MessageType.ORDER_CANCELED,
     timestamp: readUInt64BE(buffer, 1),
     orderNumber: readUInt64BE(buffer, 9),
     canceledQuantity: readUInt64BE(buffer, 17),
@@ -133,7 +149,7 @@ function formatTrade(message) {
 
 function parseTrade(buffer) {
   return {
-    messageType: 'T',
+    messageType: MessageType.TRADE,
     timestamp: readUInt64BE(buffer, 1),
     restingOrderNumber: readUInt64BE(buffer, 9),
     incomingOrderNumber: readUInt64BE(buffer, 17),
