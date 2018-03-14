@@ -1,16 +1,16 @@
 'use strict';
 
 const MessageType = {
-  ORDER_ADDED: "A",
-  ORDER_ENTERED: "E",
-  ORDER_CANCELED: "X",
-  VERSION: "V",
-  TRADE: "T"
+  ORDER_ADDED: 'A',
+  ORDER_ENTERED: 'E',
+  ORDER_CANCELED: 'X',
+  VERSION: 'V',
+  TRADE: 'T'
 };
 
 const Side = {
-  BUY: "B",
-  SELL: "S"
+  BUY: 'B',
+  SELL: 'S'
 };
 
 exports.Side = Side;
