@@ -8,13 +8,14 @@ const MessageType = {
   TRADE: 'T'
 };
 
+exports.MessageType = MessageType;
+
 const Side = {
   BUY: 'B',
   SELL: 'S'
 };
 
 exports.Side = Side;
-exports.MessageType = MessageType;
 
 exports.format = (message) => {
   switch (message.messageType) {
