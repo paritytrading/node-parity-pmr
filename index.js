@@ -1,11 +1,11 @@
 'use strict';
 
 const MessageType = {
-  ORDER_ADDED: 'A',
-  ORDER_ENTERED: 'E',
-  ORDER_CANCELED: 'X',
   VERSION: 'V',
-  TRADE: 'T'
+  ORDER_ENTERED: 'E',
+  ORDER_ADDED: 'A',
+  ORDER_CANCELED: 'X',
+  TRADE: 'T',
 };
 
 exports.MessageType = MessageType;
