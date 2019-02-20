@@ -12,7 +12,7 @@ describe('PMR', function () {
         0x00, 0x00, 0x00, 0x01,
       ],
       parsed: {
-        messageType: 'V',
+        messageType: PMR.MessageType.VERSION,
         version: 1,
       },
     },
@@ -29,11 +29,11 @@ describe('PMR', function () {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
       ],
       parsed: {
-        messageType: 'E',
+        messageType: PMR.MessageType.ORDER_ENTERED,
         timestamp: 1,
         username: 'FOO     ',
         orderNumber: 2,
-        side: 'B',
+        side: PMR.Side.BUY,
         instrument: 'BAR     ',
         quantity: 3,
         price: 4,
@@ -47,7 +47,7 @@ describe('PMR', function () {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02,
       ],
       parsed: {
-        messageType: 'A',
+        messageType: PMR.MessageType.ORDER_ADDED,
         timestamp: 1,
         orderNumber: 2,
       },
@@ -61,7 +61,7 @@ describe('PMR', function () {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03,
       ],
       parsed: {
-        messageType: 'X',
+        messageType: PMR.MessageType.ORDER_CANCELED,
         timestamp: 1,
         orderNumber: 2,
         canceledQuantity: 3,
@@ -78,7 +78,7 @@ describe('PMR', function () {
         0x00, 0x00, 0x00, 0x05,
       ],
       parsed: {
-        messageType: 'T',
+        messageType: PMR.MessageType.TRADE,
         timestamp: 1,
         restingOrderNumber: 2,
         incomingOrderNumber: 3,
@@ -116,11 +116,11 @@ describe('PMR', function () {
       ];
 
       const parsed = {
-        messageType: 'E',
+        messageType: PMR.MessageType.ORDER_ENTERED,
         timestamp: 1,
         username: 'FOO',
         orderNumber: 2,
-        side: 'B',
+        side: PMR.Side.BUY,
         instrument: 'BAR     ',
         quantity: 3,
         price: 4,
@@ -142,11 +142,11 @@ describe('PMR', function () {
       ];
 
       const parsed = {
-        messageType: 'E',
+        messageType: PMR.MessageType.ORDER_ENTERED,
         timestamp: 1,
         username: 'FOO BAR BAZ',
         orderNumber: 2,
-        side: 'B',
+        side: PMR.Side.BUY,
         instrument: 'QUUX',
         quantity: 3,
         price: 4,
