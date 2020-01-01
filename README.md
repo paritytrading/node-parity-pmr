@@ -4,7 +4,7 @@ Parity PMR implements [Parity][]'s native market reporting protocol on Node.
 
   [Parity]: https://github.com/paritytrading/parity
 
-Parity PMR requires Node 8 or newer and Parity 0.7.0 or newer.
+Parity PMR requires Node 10 or newer and Parity 0.7.0 or newer.
 
 ## Install
 
