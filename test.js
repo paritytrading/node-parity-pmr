@@ -106,7 +106,7 @@ describe('PMR', function () {
   describe('#format()', function () {
     messages.forEach((message) => {
       it(`handles ${message.name} message`, function () {
-        assert.deepEqual(PMR.format(message.parsed), Buffer.from(message.formatted));
+        assert.deepStrictEqual(PMR.format(message.parsed), Buffer.from(message.formatted));
       });
     });
 
@@ -141,7 +141,7 @@ describe('PMR', function () {
         price: 4,
       };
 
-      assert.deepEqual(PMR.format(parsed), Buffer.from(formatted));
+      assert.deepStrictEqual(PMR.format(parsed), Buffer.from(formatted));
     });
 
     it('handles too long string', function () {
@@ -167,14 +167,14 @@ describe('PMR', function () {
         price: 4,
       }
 
-      assert.deepEqual(PMR.format(parsed), Buffer.from(formatted));
+      assert.deepStrictEqual(PMR.format(parsed), Buffer.from(formatted));
     });
   });
 
   describe('#parse()', function () {
     messages.forEach((message) => {
       it(`handles ${message.name} message`, function () {
-        assert.deepEqual(PMR.parse(Buffer.from(message.formatted)), message.parsed);
+        assert.deepStrictEqual(PMR.parse(Buffer.from(message.formatted)), message.parsed);
       });
     });
 
